@@ -1,0 +1,28 @@
+# Temporary directories and files
+temp
+output*
+bin/cachemodel
+timing_results.txt
+parboil.txt
+polybench.txt
+Makefile_full
+
+# Examples
+cuda_programs
+
+# Rscripts
+src/visualiser/sweep.r
+src/visualiser/differences.r
+src/visualiser/overview.r
+
+# Other configurations
+configurations/associativity*.conf
+configurations/cachesize*.conf
+configurations/linesize*.conf
+configurations/mshrs*.conf
+
+# Scripts
+parboil.sh
+polybench.sh
+sweep.sh
+extract.rb
