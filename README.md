@@ -10,10 +10,14 @@ Author: Cedric Nugteren (http://www.cedricnugteren.nl)
 This repository provides a GPU cache model by extending reuse distance theory. This is achieved by modelling: 1) the GPU's hierarchy of threads, warps, threadblocks, and sets of active threads, 2) conditional and non-uniform latencies, 3) cache associativity, 4) miss-status holding-registers, and 5) warp divergence. The model is implemented in C++. It uses the Ocelot GPU emulator to create unordered memory traces, which are input to the model.
 
 The repository contains 4 major parts:
-1. The C++ model itself in *src/model*.
-2. A memory tracer for the Ocelot emulator in *src/tracer*.
-3. A script to visualise the reuse distances in *src/visualiser*.
-4. A script to parse profiled cache miss rates (for comparison) in *src/profiler*.
+
+1.	The C++ model itself in *src/model*.
+
+2.	A memory tracer for the Ocelot emulator in *src/tracer*.
+
+3.	A script to visualise the reuse distances in *src/visualiser*.
+
+4.	A script to parse profiled cache miss rates (for comparison) in *src/profiler*.
 
 
 The C++ model
