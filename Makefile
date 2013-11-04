@@ -9,7 +9,7 @@
 ## Filename...........Makefile
 ## Author.............Cedric Nugteren <www.cedricnugteren.nl>
 ## Affiliation........Eindhoven University of Technology, The Netherlands
-## Last modified on...30-Oct-2013
+## Last modified on...04-Nov-2013
 ##
 ##################################
 
@@ -85,7 +85,7 @@ tracer: name dir
 	@cp ${DIR}/* $(TEMP_DIR)/tracer/${NAME}
 	@cp $(TRACER_DIR)/tracer.cpp $(TEMP_DIR)/tracer/${NAME}
 	@cp $(TRACER_DIR)/configure.ocelot $(TEMP_DIR)/tracer/${NAME}
-	cd $(TEMP_DIR)/tracer/${NAME}/ && $(NVCC) $(NVCCFLAGS) $(CUDAINCLUDE) --cuda -o $(NAME).cu.cpp $(NAME).cu -Dmain=original_main -D$(INPUT_SIZE) -D$(CACHE_SIZE) -DEMULATION
+	cd $(TEMP_DIR)/tracer/${NAME}/ && $(NVCC) $(NVCCFLAGS) $(CUDAINCLUDE) --cuda -o $(NAME).cu.cpp $(NAME).cu -Dmain=original_main -DEMULATION
 	cd $(TEMP_DIR)/tracer/${NAME}/ && $(CXX) $(CXXFLAGS) $(CUDAINCLUDE) -c -Wno-unused-but-set-variable -o ${NAME}.cu.o ${NAME}.cu.cpp
 	cd $(TEMP_DIR)/tracer/${NAME}/ && $(CXX) $(CXXFLAGS) -c -o tracer.o tracer.cpp -DNAME='"${NAME}"'
 	cd $(TEMP_DIR)/tracer/${NAME}/ && $(CXX) -o ${NAME} ${NAME}.cu.o tracer.o `OcelotConfig -l -t`
@@ -109,7 +109,7 @@ verifier: name dir
 	@echo "= Building '${NAME}' for execution on the hardware ="
 	@ssh $(GPU_SERVER) 'mkdir -p $(TEMP_DIR)/verifier/${NAME}/'
 	@scp -q ${DIR}/* $(GPU_SERVER):$(TEMP_DIR)/verifier/${NAME}/
-	ssh $(GPU_SERVER) 'cd $(TEMP_DIR)/verifier/${NAME}/ && $(NVCC) $(NVCCFLAGS) $(CUDAINCLUDE) -o ${NAME} ${NAME}.cu -D$(INPUT_SIZE) -D$(CACHE_SIZE)'
+	ssh $(GPU_SERVER) 'cd $(TEMP_DIR)/verifier/${NAME}/ && $(NVCC) $(NVCCFLAGS) $(CUDAINCLUDE) -o ${NAME} ${NAME}.cu'
 
 ##################################
 ## Visualisation targets
